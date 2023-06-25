@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block page_content %}
+<h1 class="text-xl text-gray-700 tracking-wide pb-6">{{ project.title }}</h1>
+<div class="flex">
+    <div class="grid xl:grid-cols-2 gap-10">
+        <div>
+            <img src="{% static project.image %}" alt="" width="100%">
+        </div>
+        <div>
+            <h5 class="text-2xl tracking-wide pb-2">About the project</h5>
+            <p class="text-sm tracking-wider text-gray-600">{{ project.description }}</p>
+            <br>
+            <h5 class="text-2xl tracking-wide pb-2">Technology used:</h5>
+            <p class="text-sm tracking-wider text-gray-600">{{ project.technology }}</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

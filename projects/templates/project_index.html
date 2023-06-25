@@ -4,10 +4,10 @@
 
 {% block page_content %}
     <h1 class="text-xl text-gray-700 tracking-wide pb-6">This Week's Featured Projects</h1>
-    <div class="flex">
-        <div class="grid grid-cols-4 gap-5">
+    <div class="">
+        <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-5">
             {% for project in projects %}
-            <div class="w-full bg-yellow-50 p-4 rounded-sm shadow-sm shadow-gray-400">
+            <div class="bg-orange-50 p-4 rounded-sm shadow-sm shadow-gray-400">
                 <img src="{% static project.image %}" >
                 <div class="py-2">
                     <h5 class="font-semibold tracking-wide pb-2">{{ project.title }}</h5>
