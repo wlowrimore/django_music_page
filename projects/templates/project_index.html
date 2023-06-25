@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block page_content %}
+    <h1 class="text-xl text-gray-700 tracking-wide pb-6">This Week's Featured Projects</h1>
+    <div class="flex">
+        <div class="grid grid-cols-4 gap-5">
+            {% for project in projects %}
+            <div class="w-full bg-yellow-50 p-4 rounded-sm shadow-sm shadow-gray-400">
+                <img src="{% static project.image %}" >
+                <div class="py-2">
+                    <h5 class="font-semibold tracking-wide pb-2">{{ project.title }}</h5>
+                    <p class="text-gray-700 tracking-wide">{{ project.descrition }}</p>
+                    <a href="{% url 'project_detail' project.pk %}" class="bg-red-700 text-white py-1 px-2 rounded-md">Read More</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
