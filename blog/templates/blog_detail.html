@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="w-1/2 mx-auto">
+    <h1 class="mt-4 text-lg underline text-red-700">{{ post.title }}</h1>
+    <small>
+        {{ post.created_on.date }} |&nbsp;
+        Categories:&nbsp;
+        {% for category in post.categories.all %}
+        <a class="text-blue-700" href="{% url 'blog_category' category.name %}">
+            {{ category.name }}
+        </a>&nbsp;
+        {% endfor %}
+    </small>
+    <p class="mt-4 text-gray-600">{{ post.body | linebreaks }}</p>
+    <h3 class="mt-4 text-xl">Leave a comment:</h3>
+    <form class="mt-2" action="/blog/{{ post.pk }}/" method="post">
+        {% csrf_token %}
+        <div>
+            {{ form.author }}
+        </div>
+        <div>
+            {{ form.body }}
+        </div>
+        <div class="mt-4">
+            <button class="bg-orange-300 border rounded-md py-1 px-2" type="submit" class="">Submit</button>
+        </div>
+    </form>
+    <h3 class="mt-6 text-xl text-blue-700">Comments:</h3>
+    {% for comment in comments %}
+    <p class="mt-4">
+        On {{comment.created_on.date }}&nbsp;
+        <b>{{ comment.author }}</b> wrote:
+    </p>
+    <p class="mb-4">{{ comment.body }}</p>
+    <hr>
+    {% endfor %}
+</div>
+{% endblock %}
