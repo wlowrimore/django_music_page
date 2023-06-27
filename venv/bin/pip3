@@ -1,4 +1,4 @@
-#!/home/wlowrimore/Learning_Django/my-portfolio/venv/bin/python3.10
+#!/home/wlowrimore/Learning_Django/my-portfolio/venv/bin/python3.9
 # -*- coding: utf-8 -*-
 import re
 import sys

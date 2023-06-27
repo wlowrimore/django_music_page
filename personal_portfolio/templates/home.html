@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}theGroove | Home{% endblock %}
+
+{% block page_content %}
+{% if user.is_authenticated %}
+Welcome back {{ user.username }}!
+{% else %}
+<h5>Please Login or SignUp</h5>
+{% endif %}
+{% endblock %}

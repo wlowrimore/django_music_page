@@ -1,9 +1,9 @@
 <script src="https://cdn.tailwindcss.com"></script>
-
+<title>{% block title %}theGroove{% endblock %}</title>
 
 <nav class="pt-8 pb-2 px-6 mx-[18em] border-b border-red-700">
     <div class="flex flex-row justify-between">
-        <a href="{% url 'project_index' %}" class="text-3xl hover:text-red-700">theGROOVE</a>
+        <a href="/" class="text-3xl hover:text-red-700">theGROOVE</a>
         <button type="button">
           <span></span>
         </button>
@@ -11,11 +11,23 @@
         <div id="navbarSupportedContent">
           <ul class="flex justify-between space-x-6 text-xl">
             <li class="text-white bg-red-700 px-2 rounded-md hover:text-gray-900 hover:bg-white">
-              <a href="{% url 'project_index' %}">Home</a>
+              <a href="/">Home</a>
+            </li>
+              <li class="text-gray-400 hover:text-gray-900">
+              <a href="{% url 'project_index' %}">Features</a>
             </li>
             <li class="text-gray-400 hover:text-gray-900">
               <a href="{% url 'blog_index' %}">Blog</a>
             </li>
+              {% if user.is_authenticated %}
+            <li class="text-gray-400 hover:text-gray-900">
+              <a href="{% url 'logout' %}">Log out</a>
+            </li>
+              {% else %}
+            <li class="text-gray-400 hover:text-gray-900">
+              <a href="{% url 'login' %}">Login</a>
+            </li>
+              {% endif %}
           </ul>
         </div>
     </div>
