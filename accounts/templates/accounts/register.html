@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}theGroove | Register{% endblock %}
+
+{% block page_content %}
+<div class="w-3/4 mx-auto bg-cyan-950 p-8 rounded-md">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <h3 class="text-4xl text-red-700 pb-4 tracking-wide">Register Here</h3>
+        <hr>
+        {% for field in form %}
+        <div class="mt-6">
+            <p class="text-white">{{ field.label }}: <br> {{ field }}</p>
+
+            {% for error in field.errors %}
+                <small style="color: red">{{ error }}</small>
+            {% endfor %}
+        </div>
+        {% endfor %}
+        <button type="submit" class="text-white border border-white rounded px-3 py-1 my-6 hover:bg-cyan-800">Register</button>
+    </form>
+</div>
+{% endblock %}

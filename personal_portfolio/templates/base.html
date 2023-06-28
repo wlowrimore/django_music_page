@@ -2,6 +2,9 @@
 <title>{% block title %}theGroove{% endblock %}</title>
 
 <nav class="pt-8 pb-2 px-6 mx-[18em] border-b border-red-700">
+    {% if user.is_authenticated %}
+    <p class="text-sm text-blue-700 font-light tracking-wide pb-4">signed in as {{ user.username }}</p>
+    {% endif %}
     <div class="flex flex-row justify-between">
         <a href="/" class="text-3xl hover:text-red-700">theGROOVE</a>
         <button type="button">
@@ -36,4 +39,3 @@
 <div class="my-10 mx-[18em] px-6">
     {% block page_content %}{% endblock %}
 </div>
-

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    <div class="bg-green-300 rounded py-1 px-3" role="alert">
+        <h2 class="text-center">Logged Out!</h2>
+    </div>
+
+    <h3>Login again?</h3>
+    <a href="{% url 'login' %}">---> Login</a>
+    <a href="{% url 'home' %}"><--- Or go back to home.</a>
+{% endblock %}
