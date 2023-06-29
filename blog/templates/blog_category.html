@@ -3,7 +3,7 @@
 {% block title %}thePocket | Blog{% endblock %}
 
 {% block page_content %}
-<div class="w-1/2 mx-auto">
+<div class="w-full mx-auto mb-8 overflow-auto">
     <h1 class="text-4xl py-2 border-b">{{ category | title }}</h1>
     <hr>
     {% for post in posts %}

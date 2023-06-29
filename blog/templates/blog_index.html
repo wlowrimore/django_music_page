@@ -3,8 +3,8 @@
 {% block title %}thePocket | Blog{% endblock %}
 
 {% block page_content %}
-<div class="w-2/3 mx-auto">
-    <h1 class="text-4xl py-2 border-b">Blog Index</h1>
+<div class="w-full mx-auto mb-8 overflow-auto">
+    <h1 class="text-4xl py-2 border-b">theBlog</h1>
     {% for post in posts %}
     <h2 class="mt-4 text-lg underline text-red-700"><a href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a></h2>
     <small>
