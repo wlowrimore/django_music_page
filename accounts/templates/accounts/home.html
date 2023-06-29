@@ -1,23 +1,50 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title %}thePocket | Home{% endblock %}
 
 {% block page_content %}
-    {% if user.is_authenticated %}
-    <div class="bg-gray-700 rounded p-20 text-white" role="alert">
-        <h3 class="text-3xl">Welcome Back {{ user.username }}!</h3>
+{% if user.is_authenticated %}
+<div class="bg-gray-700 px-20 pt-16 pb-14 text-white">
+    <div class="">
+        <h3 class="text-2xl mb-4">Welcome Back {{ user.username }}!</h3>
         <a href="{% url 'logout' %}" class="bg-red-700 rounded py-1 px-3 hover:bg-transparent">Logout</a>
     </div>
-    {% else %}
-    <div class="bg-gray-700 rounded p-20 text-white" role="alert">
+</div>
+{% else %}
+<div class="bg-gray-700 px-20 pt-16 pb-14 text-white">
+    <div class="mb-4">
         <h2 class="text-4xl">Welcome to thePocket</h2>
         <p>A blog dedicated to the rhythm section</p>
-        <div class="mt-2">
-            <a href="{% url 'login' %}" class="bg-red-700 rounded py-1 px-3 hover:bg-transparent">Login</a>
-            <a href="{% url 'register' %}" class="hover:text-gray-400 p-2">Register</a>
-        </div>
     </div>
-    {% endif %}
+    <div class="">
+        <a href="{% url 'login' %}" class="bg-red-700 rounded py-1 px-3 hover:bg-transparent">Login</a>
+        <a href="{% url 'register' %}" class="hover:text-gray-400 p-2">Register</a>
+    </div>
+</div>
+{% endif %}
+<div class="grid grid-cols-2 text-gray-900 border-r-2 border-gray-700" role="alert">
+    <div>
+        <img src="{% static '/img/jaco_rhythm_section_quote.png' %}" class="opacity-70">
+    </div>
+    <div class="h-[17.9rem] overflow-y-auto no-scrollbar">
+        <article class="text-md font-light px-2">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Iaculis eu non diam phasellus. Dui sapien eget mi proin sed libero. Ipsum a arcu
+            cursus
+            vitae. Commodo quis imperdiet massa tincidunt. Molestie ac feugiat sed lectus vestibulum mattis
+            ullamcorper.
+            Aenean sed adipiscing diam donec adipiscing tristique risus. Ac felis donec et odio pellentesque diam
+            volutpat. Dictum varius duis at consectetur. Pellentesque pulvinar pellentesque habitant morbi tristique
+            senectus et netus. Proin sagittis nisl rhoncus mattis rhoncus urna. Sed libero enim sed faucibus. Risus
+            feugiat in ante metus dictum. Ipsum dolor sit amet consectetur adipiscing. Magna etiam tempor orci eu
+            lobortis elementum nibh. A arcu cursus vitae congue. In metus vulputate eu scelerisque felis imperdiet
+            proin. Habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Purus viverra
+            accumsan in nisl nisi scelerisque. Dolor sit amet consectetur adipiscing elit duis tristique.
+        </article>
+    </div>
+</div>
+
+
 {% endblock %}
 
 
