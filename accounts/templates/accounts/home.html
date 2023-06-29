@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}theGroove | Home{% endblock %}
+{% block title %}thePocket | Home{% endblock %}
 
 {% block page_content %}
     {% if user.is_authenticated %}
@@ -10,7 +10,8 @@
     </div>
     {% else %}
     <div class="bg-gray-700 rounded p-20 text-white" role="alert">
-        <h2 class="text-4xl">Welcome to theGroove</h2>
+        <h2 class="text-4xl">Welcome to thePocket</h2>
+        <p>A blog dedicated to the rhythm section</p>
         <div class="mt-2">
             <a href="{% url 'login' %}" class="bg-red-700 rounded py-1 px-3 hover:bg-transparent">Login</a>
             <a href="{% url 'register' %}" class="hover:text-gray-400 p-2">Register</a>
@@ -18,3 +19,5 @@
     </div>
     {% endif %}
 {% endblock %}
+
+
