@@ -35,8 +35,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'fontawesomefree',
     'projects',
     'blog',
+    'contact',
     'accounts.apps.AccountsConfig',
 ]
 

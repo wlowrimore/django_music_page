@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}thePocket | Contact{% endblock %}
+{% block page_content %}
+
+<div class="bg-gray-700 px-20 pt-8 pb-6 text-white">
+    <div class="mb-4">
+        <h2 class="text-4xl">Contact</h2>
+        <p>Let us know how we can help.</p>
+    </div>
+</div>
+
+
+<div class="grid grid-flow-col gap-3 text-gray-900 border-r-2 border-gray-700" role="alert">
+    <div class="col-span-2 overflow-hidden">
+        <img src="{% static '/img/black_phone.png' %}" class="opacity-70 h-[115%] mt-[-9%]">
+    </div>
+    <div class="cols-span-1">
+        <form action="" method="post" class="px-auto pr-3 pt-4">
+            <div>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="w-full py-1 px-2 mt-3 rounded bg-orange-300 hover:bg-slate-300">Send</button>
+            </div>
+
+            <div class="flex flex justify-center space-x-5 my-6">
+                <a href="#"><i class="text-3xl fa-brands fa-facebook hover:text-gray-700 hover:animate-pulse"></i></a>
+                <a href="#"><i class="text-3xl fa-brands fa-twitter hover:text-gray-700 hover:animate-pulse"></i></a>
+                <a href="#"><i class="text-3xl fa-brands fa-square-instagram hover:text-gray-700 hover:animate-pulse"></i></a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--<div class="grid grid-cols-2 text-gray-900 border-r-2 border-gray-700" role="alert">-->
+<!--    <div>-->
+<!--        <img src="{% static '/img/black_phone.png' %}" class="opacity-70">-->
+<!--    </div>-->
+<!--    <div class="px-4 mx-auto flex flex-col justify-center">-->
+<!--        <form action="" method="post" class="grid grid-cols-2 px-auto">-->
+<!--            <div>-->
+<!--                {% csrf_token %}-->
+<!--                {{ form.as_p }}-->
+<!--            </div>-->
+
+<!--            <div class="flex flex-col justify-center items-center">-->
+<!--                <p>facebook(icon)</p>-->
+<!--                <p>twitter(icon)</p>-->
+<!--                <p>instagram(icon)</p>-->
+<!--            </div>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+{% endblock %}
