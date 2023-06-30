@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}thePocket | Contact{% endblock %}
+{% block page_content %}
+
+<div class="bg-gray-700 px-20 pt-16 pb-14 text-white">
+    <div class="mb-4">
+        <h2 class="text-4xl">Contact</h2>
+        <p>Let us know how we can help.</p>
+    </div>
+</div>
+
+<div class="grid grid-cols-2 text-gray-900 border-r-2 border-gray-700" role="alert">
+    <div>
+        <img src="{% static '/img/black_phone.png' %}" class="opacity-70">
+    </div>
+    <div class="text-center my-10 mx-auto flex flex-col justify-center">
+        <div class="grid grid-cols-2">
+            <div>
+                <h4>800-455-8974</h4>
+
+                </br>
+                <p>834 Fake Blvd.</p>
+                <p>Building C</p>
+                <p>Suite 108</p>
+                <p>Nashville, TN 37217</p>
+                </br>
+                <a href="https//mailto:fakenewsdev@gmail.com">fakenamedev@gmail.com</a>
+            </div>
+            <div class="flex flex-col justify-center">
+                <p>facebook(icon)</p>
+                <p>twitter(icon)</p>
+                <p>instagram(icon)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
