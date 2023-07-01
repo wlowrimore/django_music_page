@@ -1,7 +1,7 @@
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
-
+from django.contrib import messages
 from .forms import ContactForm
 
 
@@ -24,7 +24,7 @@ def contact(request):
 
             send_mail('Subject here', 'Here is the message.', 'from@example.com',
                       ['wlowrimore@gmail.com'], html_message=html)
-
+            messages.success(request, 'Your entry was validated and sent!')
             return redirect("contact")
     else:
         form = ContactForm()
