@@ -24,10 +24,13 @@ SECRET_KEY = "django-insecure-t8jr8*^iz@!ptia+8s+&z&n&q^tl@7$3hht0&dk&b$h8(s&r(j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
-EMAIL_HOST_USER = '20051b41f3503c'
-EMAIL_HOST_PASSWORD = 'ec111dc0d19b4e'
-EMAIL_PORT = '2525'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'fakenamedev@gmail.com'
+EMAIL_HOST_PASSWORD = 'oigblfnucbuqnofg'
+DEFAULT_FROM_EMAIL = 'fakenamedev@gmail.com'
+DEFAULT_TO_EMAIL = 'to email'
 
 ALLOWED_HOSTS = []
 

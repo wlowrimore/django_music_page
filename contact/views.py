@@ -23,7 +23,7 @@ def contact(request):
             })
 
             send_mail('Subject here', 'Here is the message.', 'from@example.com',
-                      ['to@example.com'], html_message=html)
+                      ['wlowrimore@gmail.com'], html_message=html)
 
             return redirect("contact")
     else:
