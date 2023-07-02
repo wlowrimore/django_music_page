@@ -7,7 +7,8 @@
 <div class="w-full mx-auto bg-cyan-950 py-8 px-20 rounded-t">
     <form class="w-full" action="" method="POST">
         {% csrf_token %}
-        <h3 class="text-4xl text-red-700 pb-4 tracking-wide">Login</h3>
+        <h3 class="text-4xl text-red-700 pb-1 tracking-wide">Login</h3>
+        <p class="text-sm text-orange-300 tracking-wide font-thin pb-2">user must be logged in to access the blog</p>
         <hr>
         {% for field in form %}
         <div class="mt-6">
