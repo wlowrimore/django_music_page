@@ -1,7 +1,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-darkred.svg)](https://opensource.org/licenses/MIT)
 # thePocket
 
-A Django MVC Blog For the Rhythm Section Community
+A Django MVP Blog For the Rhythm Section Community
 
 ## Introduction
 
