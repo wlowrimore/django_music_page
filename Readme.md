@@ -27,8 +27,8 @@ began to morph into this Blog.
 * sqlite3 (default)
 
 ## Contact
-[wlowrimore@gmail.com](mailto://wlowrimore@gmail.com)n\
-[www.williamlowrimore.com](https://www.williamlowrimore.com)n\
+[wlowrimore@gmail.com](mailto://wlowrimore@gmail.com)\
+[www.williamlowrimore.com](https://www.williamlowrimore.com)\
 [www.linkedin.com](https://www.linkedin.com/in/william-lowrimore-21778310)
 </br>
 </br>
