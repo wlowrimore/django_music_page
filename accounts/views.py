@@ -1,10 +1,7 @@
-import csv
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
 from django.contrib import messages
-from django.core.mail import EmailMessage, send_mail
-from django.conf import settings
-from .forms import UserRegistrationForm, ContactForm
+from .forms import UserRegistrationForm
 
 
 def home(request):
@@ -13,10 +10,6 @@ def home(request):
 
 def about(request):
     return render(request, 'accounts/about.html')
-
-
-# def contact(request):
-#     return render(request, 'accounts/contact.html')
 
 
 def register(request):
@@ -32,3 +25,7 @@ def register(request):
 
     context = {'form': form}
     return render(request, 'accounts/register.html', context)
+
+
+
+

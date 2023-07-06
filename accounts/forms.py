@@ -40,6 +40,3 @@ class ContactForm(forms.Form):
     message = forms.CharField(max_length=500, required=True, widget=forms.Textarea(attrs={
         'class': 'w-full border border-gray-300 rounded px-2 text-gray-800'
     }))
-
-
-

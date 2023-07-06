@@ -8,22 +8,23 @@
     <form class="w-full" action="" method="POST">
         {% csrf_token %}
         <h3 class="text-4xl text-red-700 pb-1 tracking-wide">Login</h3>
-        <p class="text-sm text-orange-300 tracking-wide font-thin pb-2">user must be logged in to access the blog</p>
+        <p class="text-sm text-yellow-100 tracking-wide font-thin pb-2">* user must be logged in to access the blog</p>
         <hr>
         {% for field in form %}
         <div class="mt-6">
             <p class="text-white">{{ field.label }}: <br></p><span class="text-gray-800">{{ field }}</span>
-
-            {% for error in field.errors %}
-                <small style="color: red">{{ error }}</small>
-            {% endfor %}
         </div>
         {% endfor %}
-        <button type="submit" class="text-white border border-white rounded px-3 py-1 my-6 hover:bg-cyan-800">Login</button>
+        {% if form.errors %}
+        <p class="text-sm text-red-400 tracking-wide font-light pt-1">Your username and password didn't match. Please try again.</p>
+        {% endif %}
+        <button type="submit" class="text-white bg-red-800 rounded-sm px-3 py-1 my-6 hover:bg-transparent">Login
+        </button>
     </form>
     <div>
         <p class="text-sm text-white">Don't have an account? <a href="{% url 'register' %}"
-            class="text-cyan-400 hover:text-cyan-600">Get One Here.</a></p>
+                                                                class="text-cyan-400 hover:text-cyan-600">Get One
+            Here.</a></p>
     </div>
 </div>
 {% endblock %}

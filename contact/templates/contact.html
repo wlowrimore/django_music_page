@@ -42,7 +42,8 @@
             <div>
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit" class="w-full py-1 px-2 mt-3 rounded bg-orange-300 hover:bg-slate-300">Send
+                <button type="submit"
+                        class="w-full py-1 px-2 mt-3 rounded-sm bg-orange-300 hover:bg-gray-700 hover:text-white">Send
                 </button>
             </div>
 
@@ -55,26 +56,4 @@
         </form>
     </div>
 </div>
-
-<!--<div class="grid grid-cols-2 text-gray-900 border-r-2 border-gray-700" role="alert">-->
-<!--    <div>-->
-<!--        <img src="{% static '/img/black_phone.png' %}" class="opacity-70">-->
-<!--    </div>-->
-<!--    <div class="px-4 mx-auto flex flex-col justify-center">-->
-<!--        <form action="" method="post" class="grid grid-cols-2 px-auto">-->
-<!--            <div>-->
-<!--                {% csrf_token %}-->
-<!--                {{ form.as_p }}-->
-<!--            </div>-->
-
-<!--            <div class="flex flex-col justify-center items-center">-->
-<!--                <p>facebook(icon)</p>-->
-<!--                <p>twitter(icon)</p>-->
-<!--                <p>instagram(icon)</p>-->
-<!--            </div>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--</div>-->
-
-
 {% endblock %}
