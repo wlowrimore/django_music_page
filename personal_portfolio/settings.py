@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'projects',
     'blog',
     'contact',
+    'disclosures',
     'accounts.apps.AccountsConfig',
 ]
 

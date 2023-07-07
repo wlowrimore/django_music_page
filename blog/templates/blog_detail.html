@@ -15,11 +15,11 @@
         {% endfor %}
     </small>
     <p class="mt-4 text-gray-600">{{ post.body | linebreaks }}</p>
-    <h3 class="mt-4 text-xl">Leave a comment:</h3>
+    <h3 class="mt-4 text-xl">Leave a comment</h3>
     <form class="mt-2" action="/blog/{{ post.pk }}/" method="post">
         {% csrf_token %}
-        <div>
-            {{ form.author }}
+        <div class="flex text-gray-500">
+            <p>comment by:&nbsp; </p><span id='author' class="text-red-700">{{ user.username }}</span>
         </div>
         <div>
             {{ form.body }}
@@ -30,11 +30,11 @@
             </button>
         </div>
     </form>
-    <h3 class="mt-6 text-xl text-blue-700">Comments:</h3>
+    <h3 class="mt-6 text-xl text-blue-700">Comments ({{ comments.count }}):</h3>
     {% for comment in comments %}
     <p class="mt-4">
         On {{comment.created_on.date }}&nbsp;
-        <b>{{ comment.author }}</b> wrote:
+        <b>{{ user.username }}</b> wrote:
     </p>
     <p class="mb-4">{{ comment.body }}</p>
     <hr>

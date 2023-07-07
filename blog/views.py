@@ -34,11 +34,12 @@ def blog_detail(request, pk):
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = Comment(
-                author=form.cleaned_data["author"],
+                # author=form.cleaned_data["author"],
                 body=form.cleaned_data["body"],
                 post=post
             )
             comment.save()
+            form = CommentForm()
 
     comments = Comment.objects.filter(post=post)
     context = {
@@ -47,3 +48,4 @@ def blog_detail(request, pk):
         "form": form,
     }
     return render(request, "blog_detail.html", context)
+

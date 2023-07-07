@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 
 from django.contrib.auth import views as auth_views
 from accounts import views as account_views
+from disclosures import views as disclosure_views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -34,6 +35,8 @@ urlpatterns = [
     path("projects/", include("projects.urls")),
     path("contact/", include("contact.urls")),
     path("blog/", include("blog.urls")),
+    path('privacy/', disclosure_views.privacy, name='privacy'),
+    path('terms/', disclosure_views.terms, name='terms')
 ]
 
 if settings.DEBUG:
