@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from users.models import CustomUser
 from django.core.validators import EmailValidator
 
 
@@ -16,7 +16,7 @@ class UserRegistrationForm(UserCreationForm):
     }))
 
     class Meta:
-        model = User
+        model = CustomUser
         fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
 
     def __init__(self, *args, **kwargs):
