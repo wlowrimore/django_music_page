@@ -13,6 +13,11 @@
         {% for category in post.categories.all %}
         <a class="text-blue-700" href="{% url 'blog_category' category.name %}">
             {{ category.name }}
+            {% if category.posts.count > 1 %}
+            ({{ category.posts.count }} posts)
+            {% else %}
+            ({{ category.posts.count }} post)
+            {% endif %}
         </a>&nbsp;
         {% endfor %}
     </small>
