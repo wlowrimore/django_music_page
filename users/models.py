@@ -3,5 +3,7 @@ from django.db import models
 
 
 class CustomUser(AbstractUser):
+    description = models.TextField(default='')
+
     class Meta:
-        db_table = 'auth_user'
+        db_table = "auth_user"

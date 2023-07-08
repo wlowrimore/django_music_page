@@ -32,6 +32,7 @@ urlpatterns = [
     path('register/', account_views.register, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='accounts/logout.html'), name='logout'),
+    path('profile/<username>', account_views.profile, name='profile'),
     path("projects/", include("projects.urls")),
     path("contact/", include("contact.urls")),
     path("blog/", include("blog.urls")),

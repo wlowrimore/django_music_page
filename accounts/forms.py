@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from users.models import CustomUser
 from django.core.validators import EmailValidator
@@ -25,6 +26,19 @@ class UserRegistrationForm(UserCreationForm):
         self.fields['username'].widget.attrs['class'] = 'w-full border border-gray-300 rounded px-2 text-gray-800'
         self.fields['password1'].widget.attrs['class'] = 'w-full border border-gray-300 rounded px-2 text-gray-800'
         self.fields['password2'].widget.attrs['class'] = 'w-full border border-gray-300 rounded px-2 text-gray-800'
+
+
+class UserUpdateForm(forms.ModelForm):
+    email = forms.EmailField()
+    description = forms.CharField(widget=forms.Textarea(
+        attrs={
+            "class": "w-full bg-gray-300 outline-none border border-red-400 my-4 py-1 px-2 w-full"
+        })
+    )
+
+    class Meta:
+        model = get_user_model()
+        fields = ['first_name', 'last_name', 'email', 'description']
 
 
 class ContactForm(forms.Form):
