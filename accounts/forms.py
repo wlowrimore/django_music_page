@@ -30,11 +30,7 @@ class UserRegistrationForm(UserCreationForm):
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
-    description = forms.CharField(widget=forms.Textarea(
-        attrs={
-            "class": "w-full bg-gray-300 outline-none border border-red-400 my-4 py-1 px-2 w-full"
-        })
-    )
+    description = forms.CharField(widget=forms.Textarea)
 
     class Meta:
         model = get_user_model()
