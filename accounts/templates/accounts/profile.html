@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 
 {% block page_content %}
-<div class="w-full mx-auto py-8 px-20 rounded-t">
+<div class="w-full mx-auto py-8 px-20 border border-gray-700 rounded-t">
     <h3 class="text-4xl text-red-700 pb-4 tracking-wide">Profile Information</h3>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <div>
+        <div class="flex space-x-6">
+            <div class="w-36 h-36 rounded-full overflow-hidden">
+                <a href="#" class="relative"><img src="{{ form.instance.profile_img.url }}"></a>
+
+
+            </div>
             <div class="space-y-2">
                 <h2><strong>Username: </strong>{{ form.instance.username }}</h2>
                 <p><strong>First Name: </strong>{{ form.instance.first_name }}</p>
@@ -35,6 +40,10 @@
             <h3>Describe Yourself</h3>
             {{ form.description }}
 
+            <input style="button" id="profile_img" name="profile_img" value="Update Profile Image"
+                   class="mt-2 py-1 px-2 rounded-sm bg-gray-700 text-white text-center cursor-pointer hover:bg-gray-400 hover:text-gray-700"
+                   onclick="document.getElementById('file').click()"/>
+            <input id="file" type="file" class="hidden" name="profile_img"/>
             <div class="my-4">
                 <a href="/" class="py-1 text-blue-700 hover:text-gray-800">Change Password?</a>
             </div>
