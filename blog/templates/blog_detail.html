@@ -34,7 +34,7 @@
     {% for comment in comments %}
     <p class="mt-4">
         On {{comment.created_on.date }}&nbsp;
-        <b>{{ user.username }}</b> wrote:
+        <b>{{ comment.author }}</b> wrote:
     </p>
     <p class="mb-4">{{ comment.body }}</p>
     <hr>
