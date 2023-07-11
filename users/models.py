@@ -14,3 +14,13 @@ class CustomUser(AbstractUser):
 
     class Meta:
         db_table = "auth_user"
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+
+    profile_img = models.ImageField(default='no_image.png', upload_to='profile_images')
+    description = models.TextField()
+
+    def __str__(self):
+        return self.user.username
