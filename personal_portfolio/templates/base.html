@@ -7,7 +7,7 @@
 <nav class="pt-6 pb-2 px-6 mx-[18em] border-b border-red-700">
     {% if user.is_authenticated %}
     <div class="text-end pb-4">
-        <a class="text-blue-500 font-light hover:text-gray-700" href="#"><i
+        <a class="text-blue-500 font-light hover:text-gray-700" href="{% url 'profile' %}"><i
                 class="fa-solid fa-user"></i>&nbsp;{{ user.username }}</a>
     </div>
 

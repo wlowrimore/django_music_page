@@ -18,7 +18,11 @@
         {% if form.errors %}
         <p class="text-sm text-red-400 tracking-wide font-light pt-1">Your username and password didn't match. Please try again.</p>
         {% endif %}
-        <button type="submit" class="text-white bg-red-800 rounded-sm px-3 py-1 my-6 hover:bg-transparent">Login
+        <div class="pt-3">
+          <a href="#" class="text-xs font-light text-blue-100">Forgot Password</a>
+        </div>
+
+        <button type="submit" class="text-white bg-red-800 rounded-sm px-3 py-1 my-4 hover:bg-transparent">Login
         </button>
     </form>
     <div>

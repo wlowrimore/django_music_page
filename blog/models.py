@@ -1,6 +1,8 @@
 from personal_portfolio import settings
 from django.db import models
 
+from users.models import CustomUser
+
 User = settings.AUTH_USER_MODEL
 
 # class Snippet(models.Model):
@@ -30,7 +32,7 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
     categories = models.ManyToManyField('Category', related_name='posts')
-    user = models.ForeignKey(User, default=1, null=True, on_delete=models.SET_NULL)
+    user = models.ForeignKey(CustomUser, default=1, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.title
