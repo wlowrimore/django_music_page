@@ -6,9 +6,9 @@
 {% block page_content %}
 <h1 class="text-3xl text-gray-700 tracking-wide">{{ user.first_name }} {{ user.last_name }}</h1>
 <div class="flex mt-6 mb-8 overflow-auto">
-    <div class="grid xl:grid-flow-col gap-10 mx-auto">
-        <div class="w-[30em cols-span-2]">
-            <img class="object-fit" src="{{ user.profile.profile_img.url }}" alt="{{ user.username }}'s profile page" width="100%">
+    <div class="grid xl:grid-cols-2 gap-10 mx-auto">
+        <div>
+            <img src="{{ user.profile.profile_img.url }}" alt="{{ user.username }}'s profile page" width="100%">
         </div>
         <div>
             <h5 class="text-2xl text-red-700 tracking-wide pb-2">About {{ user.first_name }}</h5>
@@ -26,3 +26,19 @@
 
 
 {% endblock %}
+
+<!--<h1 class="text-3xl text-gray-700 tracking-wide">{{ project.title }}</h1>-->
+<!--<div class="flex mt-6 mb-8 overflow-auto">-->
+<!--    <div class="grid xl:grid-cols-2 gap-10 mx-auto">-->
+<!--        <div>-->
+<!--            <img src="{{ project.image.url }}" alt="{{ project.title }}" width="100%">-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <h5 class="text-2xl tracking-wide pb-2">About {{ project.title }}</h5>-->
+<!--            <p class="text-sm tracking-wider text-gray-600">{{ project.description }}</p>-->
+<!--            <br>-->
+<!--            <h5 class="text-2xl tracking-wide pb-2">Genre</h5>-->
+<!--            <p class="text-sm tracking-wider text-gray-600">{{ project.technology }}</p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->

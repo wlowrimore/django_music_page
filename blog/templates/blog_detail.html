@@ -6,7 +6,7 @@
 <div class="w-full mx-auto mb-8 overflow-auto">
     <h1 class="mt-4 text-lg underline text-red-700">{{ post.title }}</h1>
     <small>
-        posted by: <a href="#" class="text-red-700 hover:text-gray-700">{{ post.user }}</a>
+        posted by: <a href="{% url 'profile_detail' post.user.id %}" class="text-red-700 hover:text-gray-700">{{ post.user }}</a>
         {{ post.created_on.date }} |&nbsp;
         Categories:&nbsp;
         {% for category in post.categories.all %}
@@ -35,7 +35,7 @@
     {% for comment in comments %}
     <p class="mt-4">
         On {{comment.created_on.date }}&nbsp;
-        <b><a href="#">{{ comment.author }}</a></b> wrote:
+        <b><a href="{% url 'profile_detail' comment.id %}" class="text-red-700 hover:text-gray-800">{{ comment.author }}</a></b> wrote:
     </p>
     <p class="mb-4">{{ comment.body }}</p>
     <hr>

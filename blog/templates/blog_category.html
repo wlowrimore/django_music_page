@@ -9,6 +9,7 @@
     {% for post in posts %}
     <h2 class="mt-4 text-lg underline text-red-700"><a href="{% url 'blog_detail' post.pk %}">{{ post.title }}</a></h2>
     <small>
+        posted by: <a href="{% url 'profile_detail' post.user.id %}" class="text-red-700 hover:text-gray-800">{{ post.user }}</a>
         {{ post.created_on.date }} |&nbsp;
         Categories:&nbsp;
         {% for category in post.categories.all %}

@@ -27,8 +27,8 @@
 
         <div class="flex my-8">
             <div class="w-80 pr-8 flex-col">
-                <div class="w-[10em] h-[10em] mb-6 overflow-hidden rounded-full shadow-md shadow-gray-700">
-                    <a href="#"><img class="object-fil" src="{{ user.profile.profile_img.url }}" width="100%"></a>
+                <div class="mb-6 overflow-hidden rounded-full shadow-md shadow-gray-700">
+                    <a href="{% url 'profile_detail' user.id %}"><img class="object-fil" src="{{ user.profile.profile_img.url }}" width="100%"></a>
                 </div>
                 <div class="w-full">
                     <h2 class="w-auto"><strong>Username: </strong>{{ user.username }}</h2>
