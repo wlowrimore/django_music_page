@@ -4,6 +4,20 @@
 {% block title %}thePocket | Login{% endblock %}
 
 {% block page_content %}
+<script src="{% static 'mypy.js' %}"></script>
+{% if messages %}
+<div class="relative flex justify-between">
+    <ul id="msg" class="messages w-full text-center bg-orange-300 bg-opacity-60 py-2 rounded-t">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}> {{ message }}</li>
+        {% endfor %}
+        <button onclick="closeMsg()" class="text-3xl text-gray-700 hover:text-gray-400 absolute right-3
+         top-0">&times;
+        </button>
+    </ul>
+</div>
+{% endif %}
+
 <div class="w-full mx-auto bg-cyan-950 py-8 px-20 rounded-t">
     <form class="w-full" action="" method="POST">
         {% csrf_token %}
@@ -19,7 +33,7 @@
         <p class="text-sm text-red-400 tracking-wide font-light pt-1">Your username and password didn't match. Please try again.</p>
         {% endif %}
         <div class="pt-3">
-          <a href="#" class="text-xs font-light text-blue-100">Forgot Password</a>
+          <a href="#" class="text-xs font-light text-blue-100">Forgot Password?</a>
         </div>
 
         <button type="submit" class="text-white bg-red-800 rounded-sm px-3 py-1 my-4 hover:bg-transparent">Login

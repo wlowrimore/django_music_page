@@ -25,6 +25,7 @@ from users import views as user_views
 from disclosures import views as disclosure_views
 
 urlpatterns = [
+    path('accounts/', include('django.contrib.auth.urls')),
     path("admin/", admin.site.urls),
     path('', include('users.urls')),
     path('about/', user_views.about, name='about'),
@@ -33,6 +34,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('profile/', user_views.profile, name='profile'),
     path('profile/<int:user_id>/', user_views.profile_view, name='profile_detail'),
+    # path('password_reset', user_views.password_reset_request, name='password_reset'),
     path("projects/", include("projects.urls")),
     path("contact/", include("contact.urls")),
     path("blog/", include("blog.urls")),

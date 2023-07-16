@@ -3,6 +3,23 @@
 
 {% block title %}theGroove | Register{% endblock %}
 {% block page_content %}
+<script src="{% static 'mypy.js' %}"></script>
+{% if messages %}
+<div class="relative flex justify-between">
+    <ul id="msg" class="messages w-full text-center bg-orange-300 bg-opacity-60 py-2 rounded-t">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}> {{ message }}</li>
+        {% endfor %}
+        <button onclick="closeMsg()" class="text-3xl text-gray-700 hover:text-gray-400 absolute right-3
+         top-0">&times;
+        </button>
+    </ul>
+</div>
+
+
+{% endif %}
+
+
 <div class="w-full mx-auto bg-cyan-950 py-8 px-20 rounded-t">
     <form action="" method="POST">
         {% csrf_token %}
@@ -10,7 +27,7 @@
         <hr>
         {% for field in form %}
         <div class="mt-6">
-            <p class="text-white">{{ field.label }}: <br> {{ field }}</p>
+            <p class="text-white">{{ field.label }}: <br> <span class="text-gray-800">{{ field }}</span></p>
 
             {% for error in field.errors %}
             <small style="color: red">{{ error }}</small>

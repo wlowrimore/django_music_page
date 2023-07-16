@@ -5,91 +5,106 @@
 {% block page_content %}
 <script src="{% static 'flashout.js' %}"></script>
 
-<div class="w-full mx-auto py-8 px-20 border border-gray-700 rounded">
-    <h3 class="text-4xl text-red-700 pb-8 tracking-wide">Profile Information</h3>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
+<!--<div class="w-full mx-auto py-8 px-20 border border-gray-700 rounded">-->
+<h3 class="text-4xl text-red-700 pb-8 tracking-wide">Profile Information</h3>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
 
-        <div class="relative">
-            {% if messages %}
-            <ul id="msg" class="messages">
-                {% for message in messages %}
-                <li {% if message.tags %} class="bg-green-100 text-center py-2 {{ message.tags }}" {% endif %}>
-                    {{ message }}!
-                </li>
-                {% endfor %}
-                <button onclick="closeMsg()" class="text-3xl text-gray-700 hover:text-gray-400 absolute right-3
+    <div class="relative">
+        {% if messages %}
+        <ul id="msg" class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="bg-green-100 text-center py-2 {{ message.tags }}" {% endif %}>
+                {{ message }}!
+            </li>
+            {% endfor %}
+            <button onclick="closeMsg()" class="text-3xl text-gray-700 hover:text-gray-400 absolute right-3
                     top-0">&times;
-                </button>
-            </ul>
-        </div>
-        {% endif %}
+            </button>
+        </ul>
+    </div>
+    {% endif %}
 
-        <div class="flex my-8">
-            <div class="w-80 pr-8 flex-col">
-                <div class="mb-6 overflow-hidden rounded-full shadow-md shadow-gray-700">
-                    <a href="{% url 'profile_detail' user.id %}"><img class="object-fil" src="{{ user.profile.profile_img.url }}" width="100%"></a>
-                </div>
-                <div class="w-full">
-                    <h2 class="w-auto"><strong>Username: </strong>{{ user.username }}</h2>
-                    <p class="w-auto"><strong>First Name: </strong>{{ user.profile.first_name }}</p>
-                    <p class="w-auto"><strong>Last Name: </strong>{{ user.profile.last_name }}</p>
-                    <p class="w-auto"><strong>Email: </strong>{{ user.profile.email }}</p>
-                    <p class="w-auto"><strong>Location: </strong>{{ user.profile.location }}</p>
-                </div>
+    <div class="flex my-8">
+        <div class="w-80 pr-8 flex-col">
+            <div class="mb-6 overflow-hidden rounded-full shadow-md shadow-gray-700">
+                <a href="{% url 'profile_detail' user.id %}"><img class="object-fil"
+                                                                  src="{{ user.profile.profile_img.url }}" width="100%"></a>
             </div>
+            <div class="w-full">
+                <h2 class="w-auto"><strong>Username: </strong>{{ user.username }}</h2>
+                <p class="w-auto"><strong>First Name: </strong>{{ user.profile.first_name }}</p>
+                <p class="w-auto"><strong>Last Name: </strong>{{ user.profile.last_name }}</p>
+                <p class="w-auto"><strong>Email: </strong>{{ user.profile.email }}</p>
+                <p class="w-auto"><strong>Location: </strong>{{ user.profile.location }}</p>
+            </div>
+        </div>
 
-            <div class="w-5/6">
-                <p class="w-full text-3xl pb-4">About {{ user.profile.first_name }} {{ user.profile.last_name }}:
-                </p>
-                <hr>
-                <article class="pt-4">{{ user.profile.bio }}</article>
-            </div>
+        <div class="w-5/6">
+            <p class="w-full text-3xl pb-4">About {{ user.profile.first_name }} {{ user.profile.last_name }}:
+            </p>
+            <hr>
+            <article class="pt-4">{{ user.profile.bio }}</article>
         </div>
-        <hr>
-        <h2 class="mt-4 mb-4 text-red-700 text-xl">Update User Info</h2>
-        <div class="flex flex-col my-8">
-            <div class="py-2">
-                <p class="text-slate-500 pb-2">update username</p>
-                {{ u_form.username }}
-            </div>
+    </div>
+    <hr>
+    <h2 class="mt-4 mb-4 text-red-700 text-xl">Update User Info</h2>
+    <div class="flex flex-col my-8">
+        <div class="py-2">
+            <p class="text-slate-500 pb-2">update username</p>
+            {{ u_form.username }}
+        </div>
+        <div class="py-2">
+            <p class="text-slate-500 pb-2">update first name</p>
+            {{ u_form.first_name }}
+        </div>
+        <div class="py-2">
+            <p class="text-slate-500 pb-2">update last name</p>
+            {{ u_form.last_name }}
+        </div>
+        <div class="py-2">
+            <p class="text-slate-500 pb-2">update email</p>
+            {{ u_form.email }}
+        </div>
+    </div>
+    <hr>
+    <h2 class="mt-4 mb-4 text-red-700 text-xl">Update Profile Info</h2>
+    <div class="my-8">
+        <div class="py-2">
+            <p class="text-slate-500 pb-2">update first name</p>
+            {{ p_form.first_name }}
+        </div>
+        <div class="py-2">
+            <p class="text-slate-500 pb-2">update last name</p>
+            {{ p_form.last_name }}
+        </div>
+        <div class="py-2">
+            <p class="text-slate-500 pb-2">update email</p>
+            {{ p_form.email }}
+        </div>
+        <div class="py-2">
+            <p class="text-slate-500 pb-2">update location</p>
+            {{ p_form.location }}
+        </div>
+        <div class="py-2">
+            <p class="text-slate-500 pb-2">update bio</p>
+            {{ p_form.bio }}
+        </div>
+        <div class="py-2">
+            <p class="text-slate-500 pb-2">update portfolio image</p>
+            {{ p_form.profile_img }}
+        </div>
+        <div class="py-2">
+            <a href="#" class="text-slate-500 hover:text-red-700">Change password?</a>
+        </div>
+        <div class="my-4">
+            <button class="bg-orange-300 px-3 rounded-sm hover:bg-gray-700 hover:text-white" type="submit">
+                Update
+            </button>
+        </div>
 
-            <div class="py-2">
-                <p class="text-slate-500 pb-2">update email</p>
-                {{ u_form.email }}
-            </div>
-        </div>
-        <hr>
-        <h2 class="mt-4 mb-4 text-red-700 text-xl">Update Profile Info</h2>
-        <div class="my-8">
-            <div class="py-2">
-                <p class="text-slate-500 pb-2">update first name</p>
-                {{ p_form.first_name }}
-            </div>
-            <div class="py-2">
-                <p class="text-slate-500 pb-2">update last name</p>
-                {{ p_form.last_name }}
-            </div>
-            <div class="py-2">
-                <p class="text-slate-500 pb-2">update email</p>
-                {{ p_form.email }}
-            </div>
-            <div class="py-2">
-                <p class="text-slate-500 pb-2">update location</p>
-                {{ p_form.location }}
-            </div>
-            <div class="py-2">
-                <p class="text-slate-500 pb-2">update bio</p>
-                {{ p_form.bio }}
-            </div>
-            <div class="py-2">
-                <p class="text-slate-500 pb-2">update portfolio image</p>
-                {{ p_form.profile_img }}
-            </div>
-        </div>
-        <button class="bg-orange-300 py-1 px-3 rounded-sm hover:bg-gray-700 hover:text-white" type="submit">
-            Update
-        </button>
-    </form>
-</div>
+    </div>
+
+</form>
+<!--</div>-->
 {% endblock %}
