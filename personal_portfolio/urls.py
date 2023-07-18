@@ -34,12 +34,32 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('profile/', user_views.profile, name='profile'),
     path('profile/<int:user_id>/', user_views.profile_view, name='profile_detail'),
-    # path('password_reset', user_views.password_reset_request, name='password_reset'),
     path("projects/", include("projects.urls")),
     path("contact/", include("contact.urls")),
     path("blog/", include("blog.urls")),
     path('privacy/', disclosure_views.privacy, name='privacy'),
-    path('terms/', disclosure_views.terms, name='terms')
+    path('terms/', disclosure_views.terms, name='terms'),
+
+    # Password reset links (ref: https://github.com/django/django/blob/master/django/contrib/auth/views.py)
+    path('password_change/done/',
+         auth_views.PasswordChangeDoneView.as_view(template_name='registration/password_change_done.html'),
+         name='password_change_done'),
+
+    path('password_change/', auth_views.PasswordChangeView.as_view(template_name='registration/password_change.html'),
+         name='password_change'),
+
+    path('password_reset/done/',
+         auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_done.html'),
+         name='password_reset_done'),
+
+    path('password_reset_confirm/<uidb64>/<token>/',
+         auth_views.PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirm.html'),
+         name='password_reset_confirm'),
+    path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
+
+    path('reset/done/',
+         auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'),
+         name='password_reset_complete'),
 ]
 
 if settings.DEBUG:

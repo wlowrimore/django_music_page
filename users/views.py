@@ -1,9 +1,11 @@
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import SetPasswordForm
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.models import User
+from django.contrib.auth.views import PasswordChangeView
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse_lazy
 from django.views.decorators.http import require_http_methods
-
 from django.shortcuts import redirect
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_str
@@ -13,7 +15,8 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
 from django.db.models.query_utils import Q
 
-from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm, PasswordResetForm
+import users
+from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm, ChangePasswordForm
 from .models import CustomUser
 from .tokens import account_activation_token
 
@@ -31,7 +34,7 @@ def activate(request, uidb64, token):
     try:
         uid = force_str(urlsafe_base64_decode(uidb64))
         user = CustomUser.objects.get(pk=uid)
-    except(TypeError, ValueError, OverflowError, CustomUser.DoesNotExist):
+    except(TypeError, ValueError, OverflowError):
         user = None
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
@@ -84,29 +87,6 @@ def register(request):
     )
 
 
-# def register(request):
-#     if request.method == 'POST':
-#         form = UserRegistrationForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             username = form.cleaned_data.get('username')
-#             messages.success(request, f'Your account has been created! You are now able to log in')
-#             return redirect('login')
-#     else:
-#         form = UserRegistrationForm()
-#     return render(request, 'register.html', {'form': form})
-
-
-# def profile_details(request):
-#     user = CustomUser.objects.all()
-#     details = Profile.objects.all()
-#
-#     context = {
-#         "user": user
-#         "details": details
-#     }
-#
-#     return render(request, 'profile_detail', context)
 @login_required
 def profile(request, username=None):
     if request.method == 'POST':
@@ -159,57 +139,29 @@ def profile_view(request, user_id):
 
 @login_required
 def password_change(request):
-    user = request.user
+    user = users.models.CustomUser(request.user)
     if request.method == 'POST':
-        form = SetPasswordForm(user, request.POST)
-        messages.success(request, "Your password has been successfully changed!")
-        return redirect('login')
-    else:
-        messages.error(request, 'Something went wrong.  Please try again.')
-
-    form = SetPasswordForm(user)
+        form = ChangePasswordForm(user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your password has been successfully changed.')
+            return redirect('login')
+        else:
+            for error in list(form.errors.values()):
+                messages.error(request, error)
+    form = ChangePasswordForm(user)
     return render(request, 'password_reset_confirm.html', {'form': form})
 
-
-# def password_reset_request(request):
+# @login_required
+# def change_password(request):
+#     user = request.user
 #     if request.method == 'POST':
-#         form = PasswordResetForm(request.POST)
-#         if form.is_valid():
-#             user_email = form.cleaned_data['email']
-#             associated_user = CustomUser.objects.filter(Q(email=user_email)).first()
-#             if associated_user:
-#                 subject = "Password Reset request"
-#                 message = render_to_string("template_reset_password.html", {
-#                     'user': associated_user,
-#                     'domain': get_current_site(request).domain,
-#                     'uid': urlsafe_base64_encode(force_bytes(associated_user.pk)),
-#                     'token': account_activation_token.make_token(associated_user),
-#                     "protocol": 'https' if request.is_secure() else 'http'
-#                 })
-#                 email = EmailMessage(subject, message, to=[associated_user.email])
-#                 if email.send():
-#                     messages.success(request,
-#                                      """
-#                         <h2>Password reset sent</h2><hr>
-#                         <p>
-#                             We've emailed you instructions for setting your password, if an account exists with the
-#                             email you entered. You should receive them shortly.<br>If you don't receive an email,
-#                             please make sure you've entered the address you registered with, and check your spam folder.
-#                         </p>
-#                         """
-#                                      )
-#                 else:
-#                     messages.error(request, "Problem sending reset password email, <b>SERVER PROBLEM</b>")
-#
-#             return redirect('/')
-#
-#     form = PasswordResetForm()
-#     return render(
-#         request=request,
-#         template_name="password_reset.html",
-#         context={"form": form}
-#     )
-#
-#
-# def passwordResetConfirm(request, uidb64, token):
-#     return redirect("/")
+#         form = ChangePasswordForm(user, request.POST)
+#         if form.is_valid(user):
+#             form.save(user)
+#             messages.success(request, 'Your password has been changed!')
+#             return redirect('login')
+#         else:
+#             messages.error(request, 'Something went wrong...')
+#     form = ChangePasswordForm(user)
+#     return render(request, 'password-change-confirm.html', {'form': form})

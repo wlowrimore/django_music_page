@@ -1,5 +1,7 @@
 from django import forms
+from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, SetPasswordForm, PasswordResetForm
+
 from .models import CustomUser, Profile
 
 
@@ -68,21 +70,30 @@ class ProfileUpdateForm(forms.ModelForm):
         fields = ['first_name', 'last_name', 'email', 'location', 'bio', 'profile_img']
 
 
-class SetPassword(SetPasswordForm):
-    new_password1 = forms.PasswordInput()
-    new_password2 = forms.PasswordInput()
+class ChangePasswordForm(SetPasswordForm):
+    new_password1 = forms.CharField(widget=forms.PasswordInput)
+    new_password2 = forms.CharField(widget=forms.PasswordInput)
 
     class Meta:
-        model = CustomUser
+        model = get_user_model()
         fields = ['new_password1', 'new_password2']
 
 
-class PasswordResetForm(PasswordResetForm):
-    email = forms.EmailField()
+# class ChangePasswordForm(SetPasswordForm):
+#     new_password1 = forms.CharField(widget=forms.PasswordInput)
+#     new_password2 = forms.CharField(widget=forms.PasswordInput)
+#
+#     class Meta:
+#         model = CustomUser
+#         fields = ['new_password1', 'new_password2']
 
-    class Meta:
-        model = CustomUser()
-        fields = ['email']
+
+# class PasswordResetForm(PasswordResetForm):
+#     email = forms.EmailField()
+#
+#     class Meta:
+#         model = CustomUser()
+#         fields = ['email']
 
 
 class LoginForm(AuthenticationForm):
@@ -93,6 +104,7 @@ class LoginForm(AuthenticationForm):
                                widget=forms.PasswordInput(
                                    attrs={'class': 'w-full border border-gray-300 rounded px-2 text-gray-800'
                                           }))
+
     # remember_me = forms.BooleanField(required=False)
 
     class Meta:
