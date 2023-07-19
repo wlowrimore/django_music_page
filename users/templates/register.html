@@ -20,7 +20,7 @@
 {% endif %}
 
 
-<div class="w-full mx-auto bg-cyan-950 py-8 px-20 rounded-t">
+<div class="flex flex-col mx-auto justify-center w-[34rem] h-[36em]">
     <form action="" method="POST">
         {% csrf_token %}
         <h3 class="text-4xl text-red-700 pb-4 tracking-wide">Register Here</h3>
@@ -36,13 +36,13 @@
         {% endfor %}
         <div class="flex text-white pt-6">
             <input type="checkbox" required>&nbsp; &nbsp;
-            <p>I have read and agree to the <a href="{% url 'terms' %}" class="text-cyan-400 hover:text-cyan-600">Terms
+            <p class="text-gray-900 font-light">I have read and agree to the <a href="{% url 'terms' %}" class="text-cyan-700 hover:text-cyan-950">Terms
                 and
-                Conditions</a> and <a href="{% url 'privacy' %}" class="text-cyan-400 hover:text-cyan-600"> Privacy
+                Conditions</a> and <a href="{% url 'privacy' %}" class="text-cyan-700 hover:text-cyan-950"> Privacy
                 Policy</a>.
         </div>
 
-        <button type="submit" class="bg-red-800 text-white rounded-sm px-3 py-1 my-6 hover:bg-transparent">
+        <button type="submit" class="bg-red-800 text-white rounded-sm px-3 py-1 my-6 hover:bg-slate-700">
             Register
         </button>
 

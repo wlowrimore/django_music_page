@@ -1,4 +1,4 @@
-from django.contrib.auth import get_user_model, update_session_auth_hash
+from django.contrib.auth import get_user_model, update_session_auth_hash, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
@@ -16,7 +16,7 @@ from django.core.mail import EmailMessage
 from django.db.models.query_utils import Q
 
 import users
-from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm, ChangePasswordForm
+from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm, ChangePasswordForm, UserLoginForm
 from .models import CustomUser
 from .tokens import account_activation_token
 
@@ -87,6 +87,23 @@ def register(request):
     )
 
 
+def login(request):
+    if request.method == 'GET':
+        context = ''
+        return render(request, 'login.html', {'context', context})
+    elif request.method == 'POST':
+        username = request.POST.get('username', '')
+        password = request.POST.get('password', '')
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('')
+        else:
+            context = {'error': 'Wrong credentials'}
+            return render(request, 'login.html', {'context':context})
+
+
 @login_required
 def profile(request, username=None):
     if request.method == 'POST':
@@ -151,17 +168,3 @@ def password_change(request):
                 messages.error(request, error)
     form = ChangePasswordForm(user)
     return render(request, 'password_reset_confirm.html', {'form': form})
-
-# @login_required
-# def change_password(request):
-#     user = request.user
-#     if request.method == 'POST':
-#         form = ChangePasswordForm(user, request.POST)
-#         if form.is_valid(user):
-#             form.save(user)
-#             messages.success(request, 'Your password has been changed!')
-#             return redirect('login')
-#         else:
-#             messages.error(request, 'Something went wrong...')
-#     form = ChangePasswordForm(user)
-#     return render(request, 'password-change-confirm.html', {'form': form})
