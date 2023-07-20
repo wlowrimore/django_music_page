@@ -4,3 +4,7 @@ function closeMsg() {
         msg.remove();
     })
 }
+
+function restorebg() {
+    document.querySelector('inpt').style.backgroundColor = 'white';
+}

@@ -1,4 +1,4 @@
-from django.contrib.auth import get_user_model, update_session_auth_hash, authenticate
+from django.contrib.auth import get_user_model, update_session_auth_hash, authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
@@ -87,22 +87,16 @@ def register(request):
     )
 
 
-def login(request):
-    if request.method == 'GET':
-        context = ''
-        return render(request, 'login.html', {'context', context})
-    elif request.method == 'POST':
-        username = request.POST.get('username', '')
-        password = request.POST.get('password', '')
-
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('')
-        else:
-            context = {'error': 'Wrong credentials'}
-            return render(request, 'login.html', {'context':context})
-
+def login_view(request):
+    username = request.POST["username"]
+    password = request.POST["password"]
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return redirect('home.html')
+    else:
+        messages.error(request, 'User not found in database')
+        return render(request, 'login.html')
 
 @login_required
 def profile(request, username=None):

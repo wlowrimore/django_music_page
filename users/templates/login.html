@@ -18,31 +18,34 @@
 </div>
 {% endif %}
 
-<div class="flex flex-col mx-auto justify-center w-[34rem] h-[36em]">
+<div class="flex flex-col mx-auto my-[10em] p-6 justify-center w-[34rem] border border-white shadow-2xl">
     <form action="" method="POST">
         {% csrf_token %}
         <h3 class="text-4xl text-red-700 pb-4 tracking-wide">Login</h3>
         <hr>
-        {% for field in form %}
-        <div class="mt-6">
-            <p class="text-white">{{ field.label }}: <br> <span class="text-gray-800">{{ field }}</span></p>
-
-            {% for error in field.errors %}
-            <small style="color: red">{{ error }}</small>
-            {% endfor %}
+        <div class="flex flex-col mt-6">
+            <input type="text" class="focus:bg-none mb-10 border-b border-gray-400 focus:outline-none"
+                   name="username"
+                   placeholder="username">
+            <input type="password" class="mb-3 border-b border-gray-400 focus:outline-none" name="password"
+                   placeholder="password">
         </div>
+        {% for error in field.errors %}
+        <small style="color: red">{{ error }}</small>
         {% endfor %}
         <div class="pt-3">
-            <a href="{% url 'password_reset' %}" class="text-xs font-light text-blue-100 hover:text-orange-300">Forgot
+            <a href="{% url 'password_reset' %}"
+               class="text-sm font-light text-cyan-950 hover:text-blue-800 hover:underline">Forgot
                 Password?</a>
         </div>
 
-        <button type="submit" class="text-white bg-red-800 rounded-sm px-3 py-1 my-4 hover:bg-transparent">Login
+        <button type="submit" class="text-white bg-red-800 rounded-sm px-3 py-1 mt-4 hover:bg-slate-700">Login
         </button>
     </form>
     <div>
-        <p class="text-sm text-white">Don't have an account? <a href="{% url 'register' %}"
-                                                                class="text-cyan-400 hover:text-cyan-600">Get One
+        <p class="text-sm text-cyan-950">Don't have an account? <a href="{% url 'register' %}"
+                                                                   class="text-blue-900 hover:text-blue-700 hover:underline">Get
+            One
             Here.</a></p>
     </div>
 </div>

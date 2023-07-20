@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, SetPasswordForm, PasswordResetForm
 
 from .models import CustomUser, Profile
@@ -109,23 +109,6 @@ class ChangePasswordForm(SetPasswordForm):
         fields = ['new_password1', 'new_password2']
 
 
-# class ChangePasswordForm(SetPasswordForm):
-#     new_password1 = forms.CharField(widget=forms.PasswordInput)
-#     new_password2 = forms.CharField(widget=forms.PasswordInput)
-#
-#     class Meta:
-#         model = CustomUser
-#         fields = ['new_password1', 'new_password2']
-
-
-# class PasswordResetForm(PasswordResetForm):
-#     email = forms.EmailField()
-#
-#     class Meta:
-#         model = CustomUser()
-#         fields = ['email']
-
-
 class UserLoginForm(AuthenticationForm):
     username = forms.CharField(help_text=False, widget=forms.TextInput(attrs={
         'class': 'w-full border-b border-gray-400 px-1 mb-3 text-gray-800 focus:outline-none',
@@ -136,18 +119,6 @@ class UserLoginForm(AuthenticationForm):
     class Meta:
         model = CustomUser
         fields = ['username', 'password']
-
-    def __init__(self, *args, **kwargs):
-        super(UserLoginForm, self).__init__(*args, **kwargs)
-
-        self.fields['username'].widget.attrs[
-            'class'] = 'w-full border-b border-gray-400 text-gray-800 focus:outline-none'
-        self.fields['username'].widget.attrs[
-            'placeholder'] = 'username*'
-        self.fields['password'].widget.attrs[
-            'class'] = 'w-full border-b border-gray-400 text-gray-800 focus:outline-none'
-        self.fields['password'].widget.attrs[
-            'placeholder'] = 'password*'
 
 
 # class UserUpdateForm(forms.ModelForm):
