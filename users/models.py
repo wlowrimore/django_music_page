@@ -7,6 +7,7 @@ from personal_portfolio import settings
 
 class CustomUser(AbstractUser):
     email = models.EmailField(max_length=60, default='', unique=True)
+
     def image_upload_to(self, instance=None):
         if instance:
             return path.join('Users', self.username, instance)
@@ -17,7 +18,7 @@ class CustomUser(AbstractUser):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(CustomUser, related_name='profile',  on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, related_name='profile', on_delete=models.CASCADE)
     first_name = models.CharField(max_length=40, blank=True)
     last_name = models.CharField(max_length=40, blank=True)
     email = models.EmailField(max_length=60, default='')

@@ -93,10 +93,11 @@ def login_view(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)
-        return redirect('home.html')
+        return redirect('')
     else:
         messages.error(request, 'User not found in database')
-        return render(request, 'login.html')
+        return render(request, 'home.html')
+
 
 @login_required
 def profile(request, username=None):

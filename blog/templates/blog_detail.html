@@ -26,7 +26,7 @@
             {{ form.body }}
         </div>
         <div class="mt-4">
-            <button class="bg-orange-300 border rounded-md py-1 px-2 hover:bg-gray-700 hover:text-white" type="submit">
+            <button class="bg-orange-300 border rounded-sm py-1 px-2 hover:bg-gray-700 hover:text-white" type="submit">
                 Submit
             </button>
         </div>
@@ -35,10 +35,12 @@
     {% for comment in comments %}
     <p class="mt-4">
         On {{comment.created_on.date }}&nbsp;
-        <b><a href="{% url 'profile_detail' comment.id %}" class="text-red-700 hover:text-gray-800">{{ comment.author }}</a></b> wrote:
+        <span class="text-gray-800 semibold"><a href="#">{{ comment.author }}</a></span> wrote:
     </p>
     <p class="mb-4">{{ comment.body }}</p>
     <hr>
+<!--    {{ comment.post.user_id }}-->
     {% endfor %}
 </div>
 {% endblock %}
+

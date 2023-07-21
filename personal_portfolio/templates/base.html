@@ -4,39 +4,37 @@
 <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
 <title>{% block title %}thePocket{% endblock %}</title>
 
-<nav class="pt-6 pb-2 px-6 mx-[18em] border-b border-red-700">
-    {% if user.is_authenticated %}
-    <div class="text-end pb-4">
-        <a class="text-blue-500 font-light hover:text-gray-700" href="{% url 'profile' %}">
-            <i class="fa-solid fa-user"></i>&nbsp;{{ user.username }}</a>
-    </div>
-
-
-
-    {% endif %}
+<nav class="pt-10 pb-2 px-6 mx-[18em] border-b border-red-700">
     <div class="flex flex-row justify-between">
-        <a href="/" class="text-3xl hover:text-red-700">thePocket</a>
+        <a href="/" class="text-3xl text-red-700 hover:text-cyan-700">thePocket</a>
         <button type="button">
             <span></span>
         </button>
 
         <div id="navbarSupportedContent">
             <ul class="flex justify-between space-x-6 text-xl">
-                <li class="text-white bg-red-700 px-2 rounded-md hover:text-gray-900 hover:bg-white">
+                <li class="text-white bg-red-700 px-2 rounded-sm hover:text-cyan-700 hover:bg-white">
                     <a href="/">Home</a>
                 </li>
-                <li class="text-gray-400 hover:text-gray-900">
+                <li class="text-cyan-700 hover:text-cyan-950">
                     <a href="{% url 'project_index' %}">Features</a>
                 </li>
-                <li class="text-gray-400 hover:text-gray-900">
+                <li class="text-cyan-700 hover:text-cyan-950">
                     <a href="{% url 'blog_index' %}">Blog</a>
                 </li>
                 {% if user.is_authenticated %}
-                <li class="text-gray-400 hover:text-gray-900">
+                <li class="text-cyan-700 hover:text-cyan-950">
                     <a href="{% url 'logout' %}">Log out</a>
                 </li>
+                <li class="text-cyan-700 hover:text-cyan-950">
+                    <a href="{% url 'profile' %}">
+                        <i class="fa-solid fa-user"></i>
+                        <span class="text-[0.7rem]  tracking-wide">{{ user }}</span>
+                    </a>
+
+                </li>
                 {% else %}
-                <li class="text-gray-400 hover:text-gray-900">
+                <li class="text-cyan-700 hover:text-cyan-950">
                     <a href="{% url 'login' %}">Login</a>
                 </li>
                 {% endif %}

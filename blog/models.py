@@ -17,7 +17,7 @@ User = settings.AUTH_USER_MODEL
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=50)
 
     class Meta:
         verbose_name_plural = "Categories"
