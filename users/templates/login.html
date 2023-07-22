@@ -49,32 +49,4 @@
             Here.</a></p>
     </div>
 </div>
-
-<!--<div class="w-full mx-auto py-8 px-20 rounded-t">-->
-<!--    <form class="w-full" action="" method="POST">-->
-<!--        {% csrf_token %}-->
-<!--        <h3 class="text-4xl text-red-700 pb-1 tracking-wide">Login</h3>-->
-<!--        <p class="text-sm text-yellow-100 tracking-wide font-thin pb-2">* user must be logged in to access the blog</p>-->
-<!--        <hr>-->
-<!--        {% for field in form %}-->
-<!--        <div class="mt-6">-->
-<!--            <p class="text-white">{{ field.label }}: <br></p><span class="text-gray-800">{{ field }}</span>-->
-<!--        </div>-->
-<!--        {% endfor %}-->
-<!--        {% if form.errors %}-->
-<!--        <p class="text-sm text-red-400 tracking-wide font-light pt-1">Your username and password didn't match. Please try again.</p>-->
-<!--        {% endif %}-->
-<!--        <div class="pt-3">-->
-<!--          <a href="{% url 'password_reset' %}" class="text-xs font-light text-blue-100 hover:text-orange-300">Forgot Password?</a>-->
-<!--        </div>-->
-
-<!--        <button type="submit" class="text-white bg-red-800 rounded-sm px-3 py-1 my-4 hover:bg-transparent">Login-->
-<!--        </button>-->
-<!--    </form>-->
-<!--    <div>-->
-<!--        <p class="text-sm text-white">Don't have an account? <a href="{% url 'register' %}"-->
-<!--                                                                class="text-cyan-400 hover:text-cyan-600">Get One-->
-<!--            Here.</a></p>-->
-<!--    </div>-->
-<!--</div>-->
 {% endblock %}

@@ -121,15 +121,6 @@ class UserLoginForm(AuthenticationForm):
         fields = ['username', 'password']
 
 
-# class UserUpdateForm(forms.ModelForm):
-#     email = forms.EmailField()
-#     description = forms.CharField(widget=forms.Textarea)
-#
-#     class Meta:
-#         model = get_user_model()
-#         fields = ['first_name', 'last_name', 'email', 'description', 'profile_img']
-
-
 class ContactForm(forms.Form):
     fullname = forms.CharField(max_length=101, required=True, widget=forms.TextInput(attrs={
         'class': 'w-full border border-gray-300 rounded px-2 text-gray-800'

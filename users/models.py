@@ -2,8 +2,6 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import path
 
-from personal_portfolio import settings
-
 
 class CustomUser(AbstractUser):
     email = models.EmailField(max_length=60, default='', unique=True)

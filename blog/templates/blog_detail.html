@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}thePocket | Blog{% endblock %}
+{% block title %}thePocket | Comment{% endblock %}
 
 {% block page_content %}
 <div class="w-full mx-auto mb-8 overflow-auto">
@@ -40,7 +40,6 @@
     </p>
     <p class="mb-4">{{ comment.body }}</p>
     <hr>
-<!--    {{ comment.post.user_id }}-->
     {% endfor %}
 </div>
 {% endblock %}

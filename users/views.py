@@ -1,10 +1,6 @@
 from django.contrib.auth import get_user_model, update_session_auth_hash, authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import PasswordChangeForm
-from django.contrib.auth.models import User
-from django.contrib.auth.views import PasswordChangeView
 from django.shortcuts import render, get_object_or_404
-from django.urls import reverse_lazy
 from django.views.decorators.http import require_http_methods
 from django.shortcuts import redirect
 from django.template.loader import render_to_string
@@ -13,10 +9,9 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.contrib import messages
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
-from django.db.models.query_utils import Q
 
 import users
-from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm, ChangePasswordForm, UserLoginForm
+from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm, ChangePasswordForm
 from .models import CustomUser
 from .tokens import account_activation_token
 

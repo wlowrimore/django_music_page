@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}thePocket | Blog{% endblock %}
+
+{% block title %}thePocket | {{ category | title }}{% endblock %}
 
 {% block page_content %}
 <script src="{% static 'menu.js' %}"></script>

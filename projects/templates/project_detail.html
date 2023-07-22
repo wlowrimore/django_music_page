@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}thePocket | Details{% endblock %}
+{% block title %}thePocket | {{ project.title }}{% endblock %}
 
 {% block page_content %}
 <h1 class="text-3xl text-gray-700 tracking-wide">{{ project.title }}</h1>
@@ -19,6 +19,4 @@
         </div>
     </div>
 </div>
-
-
 {% endblock %}
