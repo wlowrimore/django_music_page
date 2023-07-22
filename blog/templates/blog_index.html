@@ -3,53 +3,36 @@
 {% block title %}thePocket | Blog{% endblock %}
 
 {% block page_content %}
+<script src="{% static 'menu.js' %}"></script>
+
 <div class="w-full mx-auto mb-8 overflow-auto">
     <div class="flex justify-between">
         <h1 class="text-4xl py-2 border-bz-10">theBlog</h1>
-        <div class="relative inline-block">
-            <button id="dropbtn" onclick="dropCats()" class="cursor-pointer">Select a Category</button>
-            
-            <div id="dropDown" class="flex flex-col p-2 leading-relaxed bg-white bg-opacity-85 border border-white rounded-sm shadow-lg shadow-gray-400
-            display-none absolute min-w-160px z-10">
+        <!--    DropDown Menu    -->
+        <div class="flex flex-col relative">
+            <button class="bg-cyan-700 text-white hover:text-cyan-100 rounded-sm shadow-md px-2"
+                    id="btn"
+                    onclick="toggle('dropdown')">
+
+                Select a Category&nbsp;
+                <i id="arrow" class="text-sm fa-solid fa-chevron-down"></i></button>
+
+            <section id="dropdown"
+                 class="flex flex-col w-[11rem] absolute bg-white z-10 top-6 py-3 border border-white leading-relaxed
+                rounded-sm shadow-lg hidden">
                 {% for post in posts %}
                 {% for category in post.categories.all %}
 
-                <a href="{% url 'blog_category' category.name %}">{{ category.name }}</a>
+                <a href="{% url 'blog_category' category.name %}"
+                   class="text-cyan-700 px-2 hover:bg-cyan-700 hover:text-white tracking-wide">{{ category.name }}
+                    <hr>
+                </a>
 
                 {% endfor %}
                 {% endfor %}
-            </div>
+            </section>
         </div>
-
     </div>
-
-
-    <!--        <div class="dropdown hover:display-block">-->
-    <!--            <button class="dropbtn">Select A Category</button>-->
-    <!--            <div class="dropdown-content">-->
-    <!--                -->
-    <!--                -->
-    <!--
-    <!--            </div>-->
-    <!--        </div>-->
-
-
-    <!--    <div class="flex justify-between">-->
-    <!--        <h1 class="text-4xl py-2 border-b">theBlog</h1>-->
-    <!--        <div>-->
-    <!--            <select>-->
-    <!--                <option>Select a Category</option>-->
-    <!--&lt;!&ndash;                {% for post in posts %}&ndash;&gt;-->
-    <!--                    {% for category in post.categories.all %}-->
-    <!--                    <option>-->
-    <!--                        <a href="{% url 'blog_category' category.name %}">{{ category.name }}</a>-->
-    <!--                    </option>-->
-    <!--                    {% endfor %}-->
-    <!--&lt;!&ndash;                {% endfor %}&ndash;&gt;-->
-    <!--            </select>-->
-    <!--        </div>-->
-    <!--    </div>-->
-
 
     <div>
         {% for post in posts %}
